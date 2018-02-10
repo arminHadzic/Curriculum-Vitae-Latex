@@ -1,0 +1,219 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% "ModernCV" CV and Cover Letter
+% LaTeX Template
+% Version 1.1 (9/12/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Xavier Danaux (xdanaux@gmail.com)
+% 
+% Updated by: Armin Hadzic
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Important note:
+% This template requires the moderncv.cls and .sty files to be in the same
+% directory as this .tex file. These files provide the resume style and themes
+% used for structuring the document.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%   PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt,a4paper,sans]{moderncv} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
+
+\moderncvstyle{banking} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{burgundy} % CV color - options include: 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+
+\usepackage[scale=0.97, lmargin=0.95cm, rmargin=0.95cm, footnotesep=0.25cm]{geometry} % Reduce document margins
+
+%bibliograph content
+\usepackage[minnames=3,
+				backend=bibtex,
+                style=authoryear,
+                natbib=true, 
+                style=numeric-comp               
+                ]{biblatex}
+\usepackage{biblatex}
+\addbibresource{publications.bib}
+\usepackage{booktabs}
+
+%Title spacing
+\makeatletter
+\patchcmd{\makehead}{%search
+    \ifthenelse{\equal{\@title}{}}{}{\titlestyle{~|~\@title}}\\%
+    }{%replace
+    \ifthenelse{\equal{\@title}{}}{}{\titlestyle{~|~\@title}}\\[0.25cm]%
+  }{%success
+  }{%failure
+  }
+\makeatother
+
+
+%----------------------------------------------------------------------------------------
+%   NAME AND CONTACT INFORMATION SECTION
+%----------------------------------------------------------------------------------------
+
+\firstname{Armin} % Your first name
+\familyname{Hadzic} % Your last name
+
+% All information in this block is optional, comment out any lines you don't need
+%\title{Curriculum Vitae}
+%\address{}
+\mobile{(859) 396-8870}
+%\phone{(000) 111 1112}
+%\fax{(000) 111 1113}
+\email{armin.hadzic@uky.edu}
+%Can add webpage when it is up.
+\homepage{arminhadzic.com}% The first argument is the url for the clickable link, the second argument is the url displayed in the template - this allows special characters to be displayed such as the tilde in this example
+\social[linkedin][www.linkedin.com/in/armin-hadzic]{armin-hadzic}
+
+%----------------------------------------------------------------------------------------
+
+
+\begin{document}
+
+\makecvtitle % Print the CV title
+\vspace*{-1.5cm}
+
+%----------------------------------------------------------------------------------------
+%   RESEARCH INTERESTS SECTION
+%----------------------------------------------------------------------------------------
+\section{Research Interests}
+
+\cvitem{}{Machine Learning, Deep Learning, Reinforcement Learning, Artificial Intelligence, Computer Vision, and Robotics.}
+
+%----------------------------------------------------------------------------------------
+%   EDUCATION SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Education}
+
+\cventry{2009--2013}{Bachelor of Science in Electrical Engineering}{University of Kentucky}{}{\textit{GPA -- 3.75}}{Graduated Magna Cum Laude, Minor in Computer Science}  % Arguments not required can be left empty
+\cventry{2016}{Bachelor of Science in Computer Engineering}{University of Kentucky}{}{\textit{GPA -- 3.8}}{Graduated Magna Cum Laude}
+
+%----------------------------------------------------------------------------------------
+%   PUBLICATIONS SKILLS SECTION
+%----------------------------------------------------------------------------------------
+\nocite{*}
+\printbibliography[title=Publication]
+
+%----------------------------------------------------------------------------------------
+%   WORK EXPERIENCE SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Professional Experience}
+
+\cventry{Lexington, KY}{\textsc{UK Computer Vision Lab}}{Volunteer Machine Learning Research Assistant}{2017-present}{}
+{
+\begin{itemize}
+	\item Re-engineered a GPS vehicle routing system to employ road safety scores for navigation, in order to balance speed and safety.
+\end{itemize}
+}
+
+%------------------------------------------------
+
+\subsection{Engineering}
+
+\cventry{Lexington, KY}{\textsc{Belcan Engineering Group Inc.}}{Software Development Engineer}{2017--Present}{}
+{
+	\begin{itemize}
+		\item Developed, maintained, and tested a jet engine diagnostic and fault resolution system, saving over \$100,000 by automating engine maintenance diagnostics.
+		\item Integrated and streamlined a legacy cross-platform build system with modern development tools, mitigating build errors and reducing development time.
+	\end{itemize}
+}
+
+%------------------------------------------------
+
+\cventry{Lexington, KY}{\textsc{Belcan Engineering Group Inc.}}{Embedded Software Engineer}{2016-2017}{}
+{
+\begin{itemize}
+	\item Streamlined the user interface and reduced diagnostic time of jet engines by identifying, isolating, and purging Onboard Maintenance System inefficiencies and defects.
+\end{itemize}
+}
+
+%------------------------------------------------
+
+\cventry{Lexington, KY}{\textsc{Belcan Engineering Group Inc.}}{Software Test Engineer}{2015-2016}{}
+{
+\begin{itemize}
+	\item Designed and implemented Control and Diagnostic System Verification and Validation Tests for 4 P\&W Turbofan Jet Engines. 
+	\item Discovered mission critical control logic, software, and documentation defects through root-cause analysis, informal testing, regression testing and system testing; leading to best in class, safe, and high performance jet engines.
+\end{itemize}
+}
+
+%------------------------------------------------
+
+\cventry{Lexington, KY}{\textsc{Changing Table App}}{Founder and Software Developer}{2015}{}
+{
+\begin{itemize}
+	\item Developed an Android application to aid users in locating men's washrooms containing changing tables in order to alleviate the stress of searching for baby friendly environments.
+\end{itemize}
+}
+%------------------------------------------------
+
+\cventry{Florence, KY}{\textsc{Johnson Controls Inc}}{Software Engineering Intern}{2012}{}
+{
+\begin{itemize}
+	\item Designed and implemented a software algorithm for streamlined Automated Guided Vehicle (AGV) routing, saving \$57,000 per year in scrap reduction and transportation costs.
+\end{itemize}
+}
+
+%----------------------------------------------------------------------------------------
+%   TECHNICAL SKILLS SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Technical skills}
+
+\begin{tabular}{l@{\qquad}|>{\hspace{0.5pc}}l@{\qquad}} % The final bracket specifies the number of columns in the table along with left and right borders which are specified using vertical bars (|); each column can be left, right or center-justified using l, r or c. To specify a precise width, use p{width}, e.g. p{5cm}.  The qquads specify verticle line dividers. hspace is used to specify the space between text and verticle dividers.
+
+%\toprule % Top horizontal line
+
+Programming Languages & C/C++, Python, Verilog, Java, MIPS/IA32 Assembly, Make, \LaTeX\\ \hline % Content row 1
+APIs/Libraries & Keras, Tensorflow, Scikit-Learn, Numpy\\ \hline % Content row 2
+Operating Systems & Unix/Linux, Windows, Android\\ \hline % Content row 3
+Development Environments & Linux Toolchain, Visual Studio, Jupyter, Android Studio, Xilinx\\ %Content row 4
+
+\bottomrule % Bottom horizontal line
+\end{tabular}
+
+%----------------------------------------------------------------------------------------
+%   INTERESTS SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Personal Interests}
+
+\cvitem{}{
+\begin{minipage}[t]{0.28\textwidth}
+\begin{itemize}
+\item Kaggle Competitions
+\end{itemize}
+\end{minipage}
+\begin{minipage}[t]{0.18\textwidth}
+\begin{itemize}
+\item Reading
+\end{itemize}
+\end{minipage}
+\begin{minipage}[t]{0.18\textwidth}
+\begin{itemize}
+\item Film
+\end{itemize}
+\end{minipage}
+\begin{minipage}[t]{0.18\textwidth}
+\begin{itemize}
+\item Hiking
+\end{itemize}
+\end{minipage}
+\begin{minipage}[t]{0.18\textwidth}
+\begin{itemize}
+\item Gastronomy
+\end{itemize}
+\end{minipage}
+}
+
+\end{document}

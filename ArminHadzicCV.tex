@@ -40,9 +40,25 @@
                 natbib=true, 
                 style=numeric-comp               
                 ]{biblatex}
-\usepackage{biblatex}
-\addbibresource{publications.bib}
 \usepackage{booktabs}
+\defbibheading{journal}{Journal Publications}
+\defbibheading{conference}{Publications}
+\defbibheading{workshop}{Workshop Publications}
+\defbibheading{abstracts}{Abstracts}
+\defbibheading{under_review}{Under Review}
+\defbibheading{in_prep}{In Preparation}
+
+\addbibresource[label=conference]{publications}
+\addbibresource[label=under_review]{under_review}
+\addbibresource[label=in_prep]{in_preparation}
+
+%\newcites{journal,conference,workshop,abstracts,underreview,preparation}{Refereed
+%  Journal Publications,
+%  Publications,
+%  Refereed Workshop Publications,
+%  Abstracts,
+%  Under Review,
+%  In Preparation}
 
 %Title spacing
 \makeatletter
@@ -66,7 +82,7 @@
 % All information in this block is optional, comment out any lines you don't need
 %\title{Curriculum Vitae}
 %\address{}
-\mobile{(859) 396-8870}
+\mobile{(\#\#\#) \#\#\#-\#\#\#\#} 
 %\phone{(000) 111 1112}
 %\fax{(000) 111 1113}
 \email{armin.hadzic@uky.edu}
@@ -97,16 +113,31 @@
 %----------------------------------------------------------------------------------------
 
 \section{Education}
-\cventry{2018-Present}{Master of Science in Computer Science}{University of Kentucky}{\textit{Estimated Graduate Date: Spring 2020}}{\textit{GPA -- 4.0}}{Advised by Associate Professor Nathan Jacobs}
-\cventry{2016}{Bachelor of Science in Computer Engineering}{University of Kentucky}{}{\textit{GPA -- 3.8}}{Graduated Magna Cum Laude}
-\cventry{2009-2013}{Bachelor of Science in Electrical Engineering}{University of Kentucky}{}{\textit{GPA -- 3.8}}{Graduated Magna Cum Laude, Minor in Computer Science}  % Arguments not required can be left empty
+\cventry{Advisor: Nathan Jacobs}{Master of Science in Computer Science}{University of Kentucky}{2018-2020}{\textit{GPA -- 4.0}}{Thesis: Estimating Free-Flow Speed with LiDAR and Overhead Imagery}
+\cventry{}{Bachelor of Science in Computer Engineering}{University of Kentucky}{2016}{\textit{GPA -- 3.8}}{Graduated Magna Cum Laude}
+\cventry{}{Bachelor of Science in Electrical Engineering}{University of Kentucky}{2009-2013}{\textit{GPA -- 3.8}}{Graduated Magna Cum Laude, Minor in Computer Science}  % Arguments not required can be left empty
 \cvitem{}{Dean's List Fall 2010 to Spring 2013.}
 
 %----------------------------------------------------------------------------------------
 %   PUBLICATIONS SKILLS SECTION
 %----------------------------------------------------------------------------------------
-\nocite{*}
-\printbibliography[title=Publication]
+%\section{Publications}
+\begin{refsection}[conference]
+	\nocite{*}
+	\printbibliography[title={Publications}]
+\end{refsection}
+\begin{refsection}[under_review]
+	\nocite{*}
+	\printbibliography[title={Under Review},heading=subbibliography]
+\end{refsection}
+\begin{refsection}[in_prep]
+	\nocite{*}
+	\printbibliography[title={In Preparation},heading=subbibliography]
+\end{refsection}
+
+%\nocite{WACVpaper}
+%\printbibliography[title=Publications]
+
 
 %----------------------------------------------------------------------------------------
 %   WORK EXPERIENCE SECTION
@@ -203,10 +234,10 @@
 
 %\toprule % Top horizontal line
 
-Programming Languages & C/C++, Python, Verilog, Java, MIPS/IA32 Assembly, Make, \LaTeX\\ \hline % Content row 1
-APIs/Libraries & PyTorch, Scikit-Learn, Numpy, Pandas, Keras, Tensorflow, OSMNX \\ \hline % Content row 2
-Operating Systems & Unix/Linux, Windows, OSX, Android\\ \hline % Content row 3
-Development Environments & Linux Toolchain, Jupyter, PyCharm, Visual Studio, Android Studio, Xilinx\\ %Content row 4
+Programming Languages & C/C++, Python, Verilog, Java, \LaTeX, Assembly, Make \\ \hline % Content row 1
+Libraries & PyTorch, Scikit-Learn, Keras, Tensorflow \\ \hline % Content row 2
+Operating Systems & Unix/Linux, Windows, OSX, Android \\ \hline % Content row 3
+Development Environments & Linux Toolchain, Jupyter, PyCharm, Visual Studio, Android Studio, Xilinx \\ %Content row 4
 
 \bottomrule % Bottom horizontal line
 \end{tabular}

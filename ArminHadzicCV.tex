@@ -48,13 +48,11 @@
 \defbibheading{conference}{Publications}
 \defbibheading{workshop}{Workshop Publications}
 \defbibheading{abstracts}{Abstracts}
-\defbibheading{under_review}{Under Review}
-\defbibheading{in_prep}{In Preparation}
 
 % Publication bib files
 \addbibresource[label=conference]{publications}
-\addbibresource[label=under_review]{under_review}
-\addbibresource[label=in_prep]{in_preparation}
+\addbibresource[label=journal]{journals}
+\addbibresource[label=workshop]{workshops}
 
 %Title spacing
 \makeatletter
@@ -115,26 +113,6 @@
 \cvitem{}{Computer Science Outstanding MS Student 2020.}
 \cvitem{}{Dean's List Fall 2010 to Spring 2013.}
 
-%----------------------------------------------------------------------------------------
-%   PUBLICATIONS SKILLS SECTION
-%----------------------------------------------------------------------------------------
-%\section{Publications}
-\begin{refsection}[conference]
-	\nocite{*}
-	\printbibliography[title={Publications}]
-\end{refsection}
-%\begin{refsection}[under_review]
-%	\nocite{*}
-%	\printbibliography[title={Under Review},heading=subbibliography]
-%\end{refsection}
-%\begin{refsection}[in_prep]
-%	\nocite{*}
-%	\printbibliography[title={In Preparation},heading=subbibliography]
-%\end{refsection}
-
-%\nocite{WACVpaper}
-%\printbibliography[title=Publications]
-
 
 %----------------------------------------------------------------------------------------
 %   WORK EXPERIENCE SECTION
@@ -142,6 +120,12 @@
 
 \section{Professional Experience}
 \subsection{Research}
+\cventry{Fairfax, VA}{\textsc{DZYNE Technologies Inc.}}{Computer Vision Research Scientist}{2021-Present}{}
+{
+\begin{itemize} 
+	\item Researching and developing computer vision deep learning methods for overhead and ground-level imagery.  
+\end{itemize}
+}
 \cventry{Laurel, MD}{\textsc{Johns Hopkins University Applied Physics Laboratory}}{Computer Vision Researcher}{2020-2021}{}
 {
 \begin{itemize} 
@@ -230,6 +214,27 @@
 }
 
 %----------------------------------------------------------------------------------------
+%   PUBLICATIONS SKILLS SECTION
+%----------------------------------------------------------------------------------------
+\section{Publications}
+
+\begin{refsection}[conference]
+	\nocite{*}
+	\printbibliography[title={Conferences},heading=subbibliography]
+\end{refsection}
+\begin{refsection}[journal]
+	\nocite{*}
+	\printbibliography[title={Journals},heading=subbibliography]
+\end{refsection}
+\begin{refsection}[workshop]
+	\nocite{*}
+	\printbibliography[title={Workshops},heading=subbibliography]
+\end{refsection}
+
+%\nocite{WACVpaper}
+%\printbibliography[title=Publications]
+
+%----------------------------------------------------------------------------------------
 %   TECHNICAL SKILLS SECTION
 %----------------------------------------------------------------------------------------
 
@@ -255,7 +260,6 @@ Development Environments & Linux Toolchain, Jupyter, PyCharm, Visual Studio, And
 \cvitem{}{
 \begin{itemize}
 \item 2021 Technical Committee member for University of Maryland Honor's program Gemstone thesis defense.
-\item 2019 Mentored high school student in machine learning research, who successfully transitioned to studying at MIT.
 \end{itemize}
 }
 

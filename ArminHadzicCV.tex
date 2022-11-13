@@ -50,9 +50,10 @@
 \defbibheading{abstracts}{Abstracts}
 
 % Publication bib files
-\addbibresource[label=conference]{publications}
+\addbibresource[label=conference]{conferences}
 \addbibresource[label=journal]{journals}
 \addbibresource[label=workshop]{workshops}
+\addbibresource[label=under_review]{under_review}
 
 %Title spacing
 \makeatletter
@@ -76,7 +77,7 @@
 % All information in this block is optional, comment out any lines you don't need
 %\title{Curriculum Vitae}
 %\address{}
-\mobile{(\#\#\#) \#\#\#-\#\#\#\#}
+%\mobile{(\#\#\#) \#\#\#-\#\#\#\#}
 \email{arminhadzic at outlook dot com}
 %Can add webpage when it is up.
 \homepage{www.arminhadzic.com}
@@ -96,9 +97,7 @@
 %----------------------------------------------------------------------------------------
 \section{Research Interests}
 
-\cvitem{}{Developing \textbf{deep learning} methods to address challenges in latent information representation from varying sources, such as point clouds, images, and audio. More generally, I am interested in \textbf{deep learning, computer vision, reinforcement learning, artificial intelligence, remote sensing,} and \textbf{robotics}.}
-
-%\cvitem{}{Developing \textbf{deep learning} methods to address challenges in visual ambiguity and occlusion from a single vantage point source using a continuous image streams. More generally, I am interested in \textbf{deep learning, computer vision, reinforcement learning, artificial intelligence, remote sensing,} and \textbf{robotics}.}
+\cvitem{}{Developing unsupervised/self-supervised methods to address challenges in novel class discovery and latent information representation, especially across multiple modalities (e.g., imagery, audio, and point clouds). More generally, I am interested in \textbf{deep learning, computer vision, reinforcement learning, natural language,} and \textbf{artificial intelligence}.}
 
 %----------------------------------------------------------------------------------------
 %   EDUCATION SECTION
@@ -123,7 +122,7 @@
 \begin{itemize} 
 	\item Researching and developing computer vision deep learning methods for overhead and ground-level imagery.
 	\item Designed methods for addressing resolution mismatch between imagery and annotations in supervised learning.
-	\item Led or contributed to writing 7 proposals (SBIR, STTR, BAA), winning one for a 5-year \$3M program.
+	\item Led or contributed to writing 9 proposals (SBIR, STTR, BAA), winning one for a 5-year \$3M program.
 \end{itemize}
 }
 \cventry{Laurel, MD}{\textsc{Johns Hopkins University Applied Physics Laboratory}}{Computer Vision Researcher}{2020-2021}{}
@@ -222,6 +221,10 @@
 	\nocite{*}
 	\printbibliography[title={Workshops},heading=subbibliography]
 \end{refsection}
+\begin{refsection}[under_review]
+	\nocite{*}
+	\printbibliography[title={Under Review},heading=subbibliography]
+\end{refsection}
 
 %\nocite{WACVpaper}
 %\printbibliography[title=Publications]
@@ -254,7 +257,7 @@ Development Environments & Linux Toolchain, Jupyter, PyCharm, Visual Studio, And
 \begin{itemize}
 \item 2021 University of Maryland Honor's program Gemstone thesis defense.
 \end{itemize}
-\subsection{Program Committee/Reviewer}
+\subsection{Program Committee/Reviewing}
 \begin{itemize}
 \item ECCV: 2022
 \item CVPR: 2023
@@ -262,28 +265,5 @@ Development Environments & Linux Toolchain, Jupyter, PyCharm, Visual Studio, And
 \item CVPR Workshop EARTHVISION: 2022
 \end{itemize}
 }
-
-%\cvitem{}{
-%\begin{minipage}[t]{0.28\textwidth}
-%\begin{itemize}
-%\item Kaggle Competitions
-%\end{itemize}
-%\end{minipage}
-%\begin{minipage}[t]{0.18\textwidth}
-%\begin{itemize}
-%\item Reading
-%\end{itemize}
-%\end{minipage}
-%\begin{minipage}[t]{0.18\textwidth}
-%\begin{itemize}
-%\item Film
-%\end{itemize}
-%\end{minipage}
-%\begin{minipage}[t]{0.18\textwidth}
-%\begin{itemize}
-%\item Hiking
-%\end{itemize}
-%\end{minipage}
-%}
 
 \end{document}

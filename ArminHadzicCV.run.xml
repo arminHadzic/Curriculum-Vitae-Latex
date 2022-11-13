@@ -48,6 +48,7 @@
       <file>ArminHadzicCV1-blx.aux</file>
       <file>ArminHadzicCV2-blx.aux</file>
       <file>ArminHadzicCV3-blx.aux</file>
+      <file>ArminHadzicCV4-blx.aux</file>
       <file>ArminHadzicCV-blx.bib</file>
     </provides>
     <requires type="dynamic">
@@ -55,6 +56,7 @@
       <file>ArminHadzicCV1-blx.bbl</file>
       <file>ArminHadzicCV2-blx.bbl</file>
       <file>ArminHadzicCV3-blx.bbl</file>
+      <file>ArminHadzicCV4-blx.bbl</file>
     </requires>
     <requires type="static">
       <file>blx-compat.def</file>
@@ -89,9 +91,10 @@
       <file>ArminHadzicCV-blx.bib</file>
     </requires>
     <requires type="editable">
-      <file>publications</file>
+      <file>conferences</file>
       <file>journals</file>
       <file>workshops</file>
+      <file>under_review</file>
     </requires>
     <requires type="static">
       <file>biblatex.bst</file>
@@ -118,7 +121,7 @@
       <file>ArminHadzicCV-blx.bib</file>
     </requires>
     <requires type="editable">
-      <file>publications</file>
+      <file>conferences</file>
     </requires>
     <requires type="static">
       <file>biblatex.bst</file>
@@ -173,6 +176,33 @@
     </requires>
     <requires type="editable">
       <file>workshops</file>
+    </requires>
+    <requires type="static">
+      <file>biblatex.bst</file>
+    </requires>
+  </external>
+  <external package="biblatex" priority="5" active="0">
+    <generic>bibtex</generic>
+    <cmdline>
+      <binary>bibtex</binary>
+      <option>-min-crossrefs 2</option>
+      <infile>ArminHadzicCV4-blx</infile>
+    </cmdline>
+    <input>
+      <file>ArminHadzicCV4-blx.aux</file>
+    </input>
+    <output>
+      <file>ArminHadzicCV4-blx.bbl</file>
+    </output>
+    <provides type="dynamic">
+      <file>ArminHadzicCV4-blx.bbl</file>
+    </provides>
+    <requires type="dynamic">
+      <file>ArminHadzicCV4-blx.aux</file>
+      <file>ArminHadzicCV-blx.bib</file>
+    </requires>
+    <requires type="editable">
+      <file>under_review</file>
     </requires>
     <requires type="static">
       <file>biblatex.bst</file>

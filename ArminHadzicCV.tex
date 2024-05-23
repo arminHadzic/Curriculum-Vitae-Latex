@@ -30,18 +30,27 @@
 \moderncvstyle{banking} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
 \moderncvcolor{burgundy} % CV color - options include: 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
 
-\usepackage[scale=0.88, lmargin=0.95cm, rmargin=0.95cm, footnotesep=1.5cm]{geometry} % Reduce document margins
+\usepackage[scale=0.88, 
+			lmargin=0.95cm, 
+			rmargin=0.95cm, 
+			footnotesep=1.5cm
+			]{geometry} % Reduce document margins
 
 %bibliograph content
 \usepackage[minnames=8,
-				maxnames=10,
-				backend=bibtex,
-                style=authoryear,
-                natbib=true, 
-                style=numeric-comp,
-                sorting=ydnt               
-                ]{biblatex}
+			maxnames=10,
+			backend=bibtex,
+            style=authoryear,
+            natbib=true, 
+            style=numeric-comp,
+            sorting=ydnt               
+            ]{biblatex}
+\usepackage[unicode,
+			colorlinks=true,
+			urlcolor=blue
+			]{hyperref}    
 \usepackage{booktabs}
+
 
 % Publication subheadings
 \defbibheading{journal}{Journal Publications}
@@ -66,7 +75,6 @@
   }
 \makeatother
 
-
 %----------------------------------------------------------------------------------------
 %   NAME AND CONTACT INFORMATION SECTION
 %----------------------------------------------------------------------------------------
@@ -75,11 +83,10 @@
 \familyname{Hadzic} % Your last name
 
 % All information in this block is optional, comment out any lines you don't need
-%\title{Curriculum Vitae}
+%\title{Curriculum  LaTeX Error: Missing \begin{document}.Vitae}
 %\address{}
 %\mobile{(\#\#\#) \#\#\#-\#\#\#\#}
-\email{firstname lastname at outlook dot com}
-%Can add webpage when it is up.
+\email{arminhadzic at outlook dot com}
 \homepage{www.arminhadzic.com}
 % The first argument is the url for the clickable link, the second argument is the url displayed in the template - this allows special characters to be displayed such as the tilde in this example
 \social[linkedin][www.linkedin.com/in/armin-hadzic]{armin-hadzic}
@@ -130,7 +137,7 @@
 {
 \begin{itemize} 
 	\item Designed and implemented deep learning methods for applied research in computer vision, remote sensing, medical imaging, and neuroscience.
-	\item Developed models robust to bias in classification of skin diseases, reducing skin tone bias by 7\% while maintaining 85\% accuracy.
+	\item Developed models robust to bias in skin disease classification and segmentation, reducing skin tone bias while maintaining high accuracy.
 	\item Integrated geospatial products into artificial neural networks for high resolution building damage classification, structure localization, and green house gas regression.  
 \end{itemize}
 }
@@ -240,16 +247,16 @@
 
 %\toprule % Top horizontal line
 
-Programming Languages & Python, C/C++, Verilog, Java, \LaTeX, Assembly, Make \\ \hline % Content row 1
+Programming Languages & Python, C/C++, Verilog, Java, \LaTeX, Assembly, Shell script \\ \hline % Content row 1
 Deep Learning Frameworks & PyTorch, Scikit-Learn, Keras, Tensorflow \\ \hline % Content row 2
 Operating Systems & Unix/Linux, Windows, OSX, Android \\ \hline % Content row 3
-Development Environments & Linux Toolchain, PyCharm, Visual Studio, Android Studio, Xilinx \\ %Content row 4
+Development Environments \& Tools & Linux Toolchain, Slurm, PyCharm, Visual Studio, Android Studio, Xilinx \\ %Content row 4
 
 \bottomrule % Bottom horizontal line
 \end{tabular}
 
 %----------------------------------------------------------------------------------------
-%   INTERESTS SECTION
+%   SERVICE SECTION
 %----------------------------------------------------------------------------------------
 
 \section{Service}
@@ -261,6 +268,9 @@ Development Environments & Linux Toolchain, PyCharm, Visual Studio, Android Stud
 \subsection{Program Committee/Reviewing}
 \begin{itemize}
 \item CVPR: 2023, 2024
+\begin{itemize}
+	\item Outstanding Reviewer 2024
+\end{itemize}
 \item ECCV: 2022, 2024
 \item ICCV: 2023
 \item ICLR: 2024

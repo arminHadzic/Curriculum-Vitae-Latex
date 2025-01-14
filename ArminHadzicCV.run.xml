@@ -45,16 +45,10 @@
     <generic>latex</generic>
     <provides type="dynamic">
       <file>ArminHadzicCV.aux</file>
-      <file>ArminHadzicCV1-blx.aux</file>
-      <file>ArminHadzicCV2-blx.aux</file>
-      <file>ArminHadzicCV3-blx.aux</file>
       <file>ArminHadzicCV-blx.bib</file>
     </provides>
     <requires type="dynamic">
       <file>ArminHadzicCV.bbl</file>
-      <file>ArminHadzicCV1-blx.bbl</file>
-      <file>ArminHadzicCV2-blx.bbl</file>
-      <file>ArminHadzicCV3-blx.bbl</file>
     </requires>
     <requires type="static">
       <file>blx-dm.def</file>
@@ -93,88 +87,6 @@
     <requires type="editable">
       <file>conferences</file>
       <file>journals</file>
-      <file>workshops</file>
-      <file>under_review</file>
-    </requires>
-    <requires type="static">
-      <file>biblatex.bst</file>
-    </requires>
-  </external>
-  <external package="biblatex" priority="5" active="0">
-    <generic>bibtex</generic>
-    <cmdline>
-      <binary>bibtex</binary>
-      <option>-min-crossrefs 2</option>
-      <infile>ArminHadzicCV1-blx</infile>
-    </cmdline>
-    <input>
-      <file>ArminHadzicCV1-blx.aux</file>
-    </input>
-    <output>
-      <file>ArminHadzicCV1-blx.bbl</file>
-    </output>
-    <provides type="dynamic">
-      <file>ArminHadzicCV1-blx.bbl</file>
-    </provides>
-    <requires type="dynamic">
-      <file>ArminHadzicCV1-blx.aux</file>
-      <file>ArminHadzicCV-blx.bib</file>
-    </requires>
-    <requires type="editable">
-      <file>conferences</file>
-    </requires>
-    <requires type="static">
-      <file>biblatex.bst</file>
-    </requires>
-  </external>
-  <external package="biblatex" priority="5" active="0">
-    <generic>bibtex</generic>
-    <cmdline>
-      <binary>bibtex</binary>
-      <option>-min-crossrefs 2</option>
-      <infile>ArminHadzicCV2-blx</infile>
-    </cmdline>
-    <input>
-      <file>ArminHadzicCV2-blx.aux</file>
-    </input>
-    <output>
-      <file>ArminHadzicCV2-blx.bbl</file>
-    </output>
-    <provides type="dynamic">
-      <file>ArminHadzicCV2-blx.bbl</file>
-    </provides>
-    <requires type="dynamic">
-      <file>ArminHadzicCV2-blx.aux</file>
-      <file>ArminHadzicCV-blx.bib</file>
-    </requires>
-    <requires type="editable">
-      <file>journals</file>
-    </requires>
-    <requires type="static">
-      <file>biblatex.bst</file>
-    </requires>
-  </external>
-  <external package="biblatex" priority="5" active="0">
-    <generic>bibtex</generic>
-    <cmdline>
-      <binary>bibtex</binary>
-      <option>-min-crossrefs 2</option>
-      <infile>ArminHadzicCV3-blx</infile>
-    </cmdline>
-    <input>
-      <file>ArminHadzicCV3-blx.aux</file>
-    </input>
-    <output>
-      <file>ArminHadzicCV3-blx.bbl</file>
-    </output>
-    <provides type="dynamic">
-      <file>ArminHadzicCV3-blx.bbl</file>
-    </provides>
-    <requires type="dynamic">
-      <file>ArminHadzicCV3-blx.aux</file>
-      <file>ArminHadzicCV-blx.bib</file>
-    </requires>
-    <requires type="editable">
       <file>workshops</file>
     </requires>
     <requires type="static">

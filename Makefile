@@ -36,6 +36,7 @@ clean:
 	rm -f $(MAIN).pdfsync
 	rm -rf *~ *.tmp
 	rm -f *.bbl *.blg *.brf *.aux *.end *.fls *.log *.out *.fdb_latexmk
+	rm $(MAIN)-blx.bib
 
 once: 
 	$(LATEX) $(MAIN)

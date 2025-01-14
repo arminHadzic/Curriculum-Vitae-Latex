@@ -43,26 +43,23 @@
             style=authoryear,
             natbib=true, 
             style=numeric-comp,
-            sorting=ydnt               
+            sorting=ydnt,
+            backref=false,
+            defernumbers=true
             ]{biblatex}
+\usepackage{booktabs}
 \usepackage[unicode,
 			colorlinks=true,
-			urlcolor=blue
-			]{hyperref}    
-\usepackage{booktabs}
-
-
-% Publication subheadings
-\defbibheading{journal}{Journal Publications}
-\defbibheading{conference}{Publications}
-\defbibheading{workshop}{Workshop Publications}
-\defbibheading{abstracts}{Abstracts}
+			urlcolor=blue,
+			]{hyperref}
 
 % Publication bib files
-\addbibresource[label=conference]{conferences}
-\addbibresource[label=journal]{journals}
-\addbibresource[label=workshop]{workshops}
-\addbibresource[label=under_review]{under_review}
+\addbibresource{conferences}
+\addbibresource{journals}
+\addbibresource{workshops}
+%\addbibresource[label=under_review]{under_review}
+%\addbibresource[label=abstracts]{abstracts}
+
 
 %Title spacing
 \makeatletter
@@ -85,7 +82,7 @@
 % All information in this block is optional, comment out any lines you don't need
 %\title{Curriculum  LaTeX Error: Missing \begin{document}.Vitae}
 %\address{}
-\mobile{(\#\#\#) \#\#\#-\#\#\#\#}
+%\mobile{(\#\#\#) \#\#\#-\#\#\#\#}
 \email{arminhadzic at outlook dot com}
 \homepage{www.arminhadzic.com}
 % The first argument is the url for the clickable link, the second argument is the url displayed in the template - this allows special characters to be displayed such as the tilde in this example
@@ -104,7 +101,7 @@
 %----------------------------------------------------------------------------------------
 \section{Research Interests}
 
-\cvitem{}{I am interested in developing unsupervised learning methods to address challenges in \textbf{open vocabulary segmentation} and \textbf{latent information representation}, with a focus on multi-modal learning (e.g., imagery, text, and point clouds). My research centers on \textbf{multi-modal fusion}, \textbf{generative models for image synthesis}, and \textbf{depth estimation}. I am particularly interested in how deep learning can drive \textbf{scalable AI systems} that integrate diverse data modalities for advanced computer vision and AI-driven decision making applications.}
+\cvitem{}{I am interested in developing unsupervised learning methods to address challenges in \textbf{open vocabulary segmentation} and \textbf{latent information representation}, with a focus on multi-modal learning (e.g., imagery, text, and point clouds). My research centers on \textbf{multi-modal fusion}, generative models for \textbf{image synthesis}, and \textbf{localization}. I am particularly interested in how deep learning can drive \textbf{scalable} AI systems that integrate diverse data modalities for advanced machine perception and AI-driven decision making applications.}
 
 %----------------------------------------------------------------------------------------
 %   EDUCATION SECTION
@@ -123,15 +120,15 @@
 
 \section{Professional Experience}
 \subsection{Research}
-\cventry{Fairfax, VA}{\textsc{DZYNE Technologies Inc.}}{Computer Vision Research Scientist}{2021-Present}{}
+\cventry{Fairfax, VA}{\textsc{DZYNE Technologies Inc.}}{AI Research Scientist}{2021-Present}{}
 {
 \begin{itemize} 
-	\item Led research efforts in \textbf{multi-modal fusion}~\cite{greenwell2024watch, ProbTraffic}, \textbf{pose estimation}~\cite{ProbTraffic}, \textbf{generative image synthesis}~\cite{Low2High}, and \textbf{depth estimation}, advancing AI-driven models for \textbf{multi-modal learning}, \textbf{contextual representation}, and \textbf{scalable perception systems}.
-	\item Developed and implemented \textbf{scalable supervised and unsupervised learning algorithms} for multi-modal data integration and contextual understanding, enabling advanced applications in \textbf{autonomous systems}, \textbf{interactive AI}, and \textbf{real-time simulations}.
+	\item Led research efforts in \textbf{multi-modal fusion}~\cite{greenwell2024watch}, \textbf{pose estimation}, \textbf{localization}, \textbf{depth estimation}, and \textbf{image synthesis}~\cite{Low2High}, advancing AI-driven models for multi-modal learning, contextual representation~\cite{ProbTraffic}, and scalable perception systems.
+	\item Developed and implemented scalable supervised and unsupervised learning algorithms for multi-modal data integration and contextual understanding, enabling advanced applications in autonomous systems, interactive AI, and real-time simulations.
 	\item Contributed to 9 successful proposals (SBIR, STTR, BAA), securing \textbf{\$3M in funding} from IARPA and NGA, driving innovation in advanced AI technologies.
 \end{itemize}
 }
-\cventry{Laurel, MD}{\textsc{Johns Hopkins University Applied Physics Laboratory}}{Computer Vision Researcher}{2020-2021}{}
+\cventry{Laurel, MD}{\textsc{Johns Hopkins University Applied Physics Laboratory}}{AI Research Scientist}{2020-2021}{}
 {
 \begin{itemize} 
 	\item Designed neural network bias reduction methods for skin disease classification and segmentation~\cite{yuan2023edgemixup, paul2022tara}.
@@ -213,27 +210,23 @@
 %----------------------------------------------------------------------------------------
 %   PUBLICATIONS SKILLS SECTION
 %----------------------------------------------------------------------------------------
-\section{Publications}
 
-\begin{refsection}[conference]
-	\nocite{*}
-	\printbibliography[title={Conferences},heading=subbibliography]
-\end{refsection}
-\begin{refsection}[journal]
-	\nocite{*}
-	\printbibliography[title={Journals},heading=subbibliography]
-\end{refsection}
-\begin{refsection}[workshop]
-	\nocite{*}
-	\printbibliography[title={Workshops},heading=subbibliography]
-\end{refsection}
-% \begin{refsection}[under_review]
-% 	\nocite{*}
-% 	\printbibliography[title={Under Review},heading=subbibliography]
-% \end{refsection}
-
-%\nocite{WACVpaper}
-%\printbibliography[title=Publications]
+\printbibheading [title={Publications}]
+\printbibliography[
+    title={Conference Papers},
+    keyword={conferences},
+    heading=subbibliography, 
+    resetnumbers=false]
+\printbibliography[
+    title={Journal Articles},
+    keyword={journals},
+    heading=subbibliography, 
+    resetnumbers=false]
+\printbibliography[
+    title={Workshop Papers},
+    keyword={workshops}, 
+    heading=subbibliography, 
+    resetnumbers=false]
 
 %----------------------------------------------------------------------------------------
 %   TECHNICAL SKILLS SECTION

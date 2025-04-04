@@ -99,21 +99,7 @@
 \begin{document}
 
 \makecvtitle % Print the CV title
-%\vspace*{-1.5cm}
-\vspace*{-2cm}
-
-%----------------------------------------------------------------------------------------
-%   RESEARCH INTERESTS SECTION
-%----------------------------------------------------------------------------------------
-%\section{Research Interests}
-%\noindent\textcolor{color2}{\hrule} \vspace{0.4em} % Horizontal line
-
-%\cvitem{}{My research interests center on developing \textbf{multi-modal fusion} (e.g., imagery, text, and point clouds) methods, generative models for \textbf{image synthesis}, 3D \textbf{localization}, and building \textbf{scalable} AI systems.}
-
-\section{}
-\vspace*{-0.2cm}
-
-\cvitem{}{My interests center on developing \textbf{multi-modal fusion} methods, \textbf{image synthesis}, \textbf{3D localization}, and \textbf{scalable} AI.}
+\vspace*{-1.5cm}
 
 %----------------------------------------------------------------------------------------
 %   EDUCATION SECTION
@@ -130,64 +116,56 @@
 %----------------------------------------------------------------------------------------
 
 \section{Professional Experience}
-\cventry{Fairfax, VA}{\textsc{DZYNE Technologies Inc.}}{AI Research Scientist}{2021-Present}{Scott Workman}
+\cventry{Fairfax, VA}{\textsc{DZYNE Technologies Inc.}}{AI Research Scientist}{2021-Present}{}
 {
-\begin{itemize} 
-	\item Achieved $88\%$ accuracy in land cover semantic segmentation by developing a \textbf{super-resolution label synthesis} method.
-	\item Engineered a \textbf{multi-modal transformer} with contextual representations, reducing the traffic modeling error rate to $7\%$.
-	\item Developed \textbf{scalable} tools for collecting, processing, and labeling training datasets, resulting in a $\$1M$ contract extension.
-	\item Led and/or wrote 9 successful proposals, securing $\$3M$ in funding to support AI research and development initiatives.
+\begin{itemize}
+	\item Designed and trained a feature extractor and hierarchical weighted sampler for a multimodal fusion model on a \textbf{5TB AWS dataset} across 5 organizations—boosting the \textbf{F1 score from $\mathbf{52\%}$ to $\mathbf{75\%}$} and \textbf{securing} $\mathbf{\$500k}$ in funding for a $\$2.3M$ program.
+	\item Developed scalable tools for processing and constructing $\mathbf{100k}$\textbf{+ sample image datasets}, resulting in a $\mathbf{\$1M}$ \textbf{contract extension} after achieving $\mathbf{78\%}$ \textbf{F1 score} in segmentation.
+	\item Led/co-wrote 9 proposals, securing \textbf{$\mathbf{\$3M}$ in funding} to support AI R\&D for a team of 11 researchers and engineers.
+	\item \textbf{Achieved $\mathbf{88\%}$ accuracy} in land cover semantic segmentation by developing a GAN-based super-resolution label synthesis method, with strong applicability to street-level imagery problems.
+	\item Engineered a multimodal transformer (PyTorch, HuggingFace) with contextual representations, surpassing the prior state-of-the-art method by reducing traffic modeling error to $\mathbf{7\%}$ on a $\mathbf{12k}$ \textbf{sample} dataset.
 \end{itemize}
 }
 
+%% TODO: AR/VR MLDE, GPSD
 %------------------------------------------------
 
-\cventry{Laurel, MD}{\textsc{Johns Hopkins University Applied Physics Lab}}{AI Research Scientist}{2020-2021}{Grace Hwang \& Philippe Burlina}
+\cventry{Laurel, MD}{\textsc{Johns Hopkins University Applied Physics Lab}}{AI Research Scientist}{2020-2021}{}
 {
 \begin{itemize} 
-	\item Designed optimization methods for tuning multi-agent swarm control systems, yielding $25s$ cooperative multi-reward capture.
-	\item Improved AI fairness by up to $20\%$ in medical image and data applications by developing adversarial de-biasing methods.
-	\item Modeled greenhouse gas emissions for the Climate TRACE initiative, achieving a $39kg/100m^2$ error rate across the USA.
+	\item Modeled greenhouse gas emissions for the Climate TRACE initiative, trained with Slurm and deployed with Docker \& Dask on the Microsoft Planetary Computer, achieving a $\mathbf{39kg/100m^2}$ \textbf{error rate} across the USA and running at global scale.
+	\item Optimized multi-agent swarm controllers via BoTorch, reducing cooperative capture time by $\mathbf{25s}$ for multiple rewards.
+	\item Developed adversarial de-biasing techniques that \textbf{enhanced AI fairness by $\mathbf{20\%}$} in medical imaging and data applications, enabling broader applicability across large populations.
 	\item Developed a state-scale satellite image approach, collapsing the displaced community population estimation error down to $7\%$.
 \end{itemize}
 }
 
 %------------------------------------------------
 
-\cventry{Lexington, KY}{\textsc{University of Kentucky Computer Vision Lab}}{Research Assistant}{2017-2020}{Nathan Jacobs}
+\cventry{Lexington, KY}{\textsc{University of Kentucky Computer Vision Lab}}{Research Assistant}{2017-2020}{}
 {
 \begin{itemize}
-	\item Surpassed ($13\%$) the free-flow speed estimation record by designing a \textbf{multi-modal fusion} (point cloud/imagery) model.
-	\item Estimated company financial returns with $41\%$ tercile accuracy by developing a NLP model to interpret SEC text reports.
-	\item Enhanced a navigation system's safety by integrating a visual road safety assessment model to circumvent hazardous roads.
+	\item Developed a multimodal (point cloud/imagery) road \textbf{dataset ($\mathbf{1M}$+ segments)} using distributed computing (Slurm). This improved free-flow speed estimation by $\mathbf{13\%}$--outperforming the prior state-of-the-art with a novel multimodal fusion architecture.
+	\item Designed a PyTorch NLP model to analyze SEC reports, attaining $\mathbf{41\%}$ \textbf{tercile accuracy} in predicting financial returns. Leveraged NLTK and SpaCy for efficient text processing and tokenization.
 \end{itemize}
 }
 
 %------------------------------------------------
 
-\cventry{Lexington, KY}{\textsc{Belcan Engineering Group Inc.}}{Software Development Engineer}{2015-2018}{Alan Scott}
+\cventry{Lexington, KY}{\textsc{Belcan Engineering Group Inc.}}{Software Development Engineer}{2015-2018}{}
 {
 \begin{itemize}
-	\item Automated jet engine diagnostics, saving $\$100,000$ by developing and testing a diagnostic and fault resolution system.
-	\item Reduced development and compilation time by $90\%$ through modernizing and streamlining a legacy cross-platform build system.
+	\item Automated jet engine diagnostics in C/C++, \textbf{saving $\mathbf{\$100,000}$} by developing a diagnostic and fault resolution system.
+	\item Streamlined a legacy C++/Make cross-platform building system, reducing development and compilation time by $60\%$.
 \end{itemize}
 }
 
 %------------------------------------------------
 
-\cventry{Lexington, KY}{\textsc{Tempur Sealy International Inc.}}{Software Engineering Co-op}{2013-2014}{Sam Pollock}
+\cventry{2012-2014}{\textsc{Internships}}{}{}{}
 {
 \begin{itemize}
-	\item Scaled-up product testing 10 fold by developing and launching a 3D heatmap data collection, logging, and visualization application.
-\end{itemize}
-}
-
-%------------------------------------------------
-
-\cventry{Florence, KY}{\textsc{Johnson Controls Inc.}}{Software Engineering Intern}{2012}{Daniel Legg}
-{
-\begin{itemize}
-	\item Reduced scrap and transportation costs, $\$57,000$/year, by designing a bespoke Automated Guided Vehicle routing algorithm.
+	\item Designed a routing algorithm for over 20 Automated Guided Vehicles, reducing scrap and transportation costs by $\mathbf{\$57k}$\textbf{/year}.
 \end{itemize}
 }
 
@@ -199,14 +177,11 @@
 
 \begin{tabular}{l@{\qquad}|>{\hspace{0.5pc}}l@{\qquad}} % The final bracket specifies the number of columns in the table along with left and right borders which are specified using vertical bars (|); each column can be left, right or center-justified using l, r or c. To specify a precise width, use p{width}, e.g. p{5cm}.  The qquads specify verticle line dividers. hspace is used to specify the space between text and verticle dividers.
 
-%\toprule % Top horizontal line
-
-
-Languages \& Frameworks		& \textbf{Python}, C/C++, Java, Verilog, \LaTeX, Shell, \textbf{PyTorch}, Scikit-Learn, Keras \\ \hline % row 1 Tensorflow
-Artificial Intelligence 	& \textbf{Multimodal Fusion}, \textbf{Transformers}, LLMs, Reinforcement Learning, SSL \\ \hline % row 2 Distillation
-Computer Vision 			& Generative AI, Segmentation, 3D, Localization, Pose, Depth, Remote Sensing\\ \hline % row 3
-Infrastructure 				& Data Processing, Distributed Training, Slurm, Docker, Optimization, Evaluation \\ % row 4
-
+%\toprule % Optional Top horizontal line
+Languages 					& \textbf{Python}, C/C++, Java, Verilog, \LaTeX, Shell \\ \hline % row 1
+AI/ML 						& \textbf{PyTorch}, Keras, Tensorflow, \textbf{Multimodal Transformers}, LLMs, Reinforcement Learning \\ \hline % row 2
+Computer Vision 			& Generative AI, Segmentation, 3D Vision, Localization, Pose, Depth, Remote Sensing \\ \hline % row 3
+Infrastructure 				& Data Processing, Distributed Training, Slurm, Docker, Optimization, AWS, Evaluation \\ % row 4
 \end{tabular}
 
 %----------------------------------------------------------------------------------------
@@ -214,10 +189,11 @@ Infrastructure 				& Data Processing, Distributed Training, Slurm, Docker, Optim
 %----------------------------------------------------------------------------------------
 
 \section{Service \& Recognition}
-\cvitem{}{
+\cvitem{}
+{
 \begin{itemize}
-\item Reviewer 2022-2025: CVPR, ECCV, ICCV, ICLR, NeurIPS, WACV, and CVPRW EARTHVISION.
-\item Awards: Outstanding Reviewer CVPR 2024 and Best Paper ISEC 2022 and CVPRW EARTHVISION 2021.
+	\item Best Paper ISEC 2022 and CVPRW EARTHVISION 2021; Outstanding Reviewer CVPR 2024.
+	\item Reviewer 2022-2025: CVPR, ECCV, ICCV, ICLR, NeurIPS, WACV, and CVPRW EARTHVISION.
 \end{itemize}
 }
 

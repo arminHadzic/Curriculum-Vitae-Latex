@@ -1,76 +1,82 @@
-# 
-# Adapted from: https://drewsilcock.co.uk/using-make-and-latexmk  
-#
+LATEX = pdflatex
+LATEXOPT = --shell-escape
+NONSTOP = --interaction=nonstopmode
+LATEXMK = latexmk
+LATEXMKOPT = -pdf
+CONTINUOUS = -pvc
 
-LATEX=pdflatex
-LATEXOPT=--shell-escape
-NONSTOP=--interaction=nonstopmode
-#for bibliographies
-BIBTEX=bibtex
+# Bibliography location
+BIBDIR=publications
+export BIBINPUTS := $(BIBDIR):
 
-LATEXMK=latexmk
-LATEXMKOPT=-pdf
-CONTINUOUS=-pvc
 
-MAIN=ArminHadzicCV
-SOURCES=$(MAIN).tex Makefile
-FIGURES := $(shell find figs/* -type f)
+# Public resume directories (you control this list)
+DIRS = general_resume general_cv
 
-MAIN_RESUME=ArminHadzicResume
-SOURCES_RESUME=$(MAIN_RESUME).tex Makefile
+# Target for building all resumes (public + private)
+all: $(DIRS) $(shell find priv -maxdepth 1 -mindepth 1 -type d)
+	@echo "📦 All resumes built and collected in 'build/'"
 
-all: $(MAIN).pdf $(MAIN_RESUME).pdf
+# Rule for public directories
+$(DIRS):
+	@$(MAKE) build DIR=$@
 
-.refresh:
-	touch .refresh
+# Rule for private subdirectories (like priv/openai)
+priv/%: force
+	@$(MAKE) build DIR=$@
 
-$(MAIN).pdf: $(MAIN).tex .refresh $(SOURCES) $(FIGURES)
-	$(LATEXMK) $(LATEXMKOPT) $(CONTINUOUS) \
-		-pdflatex="$(LATEX) $(LATEXOPT) $(NONSTOP) %O %S" $(MAIN)
-
-$(MAIN_RESUME).pdf: $(MAIN_RESUME).tex .refresh $(SOURCES_RESUME) $(FIGURES)
-	$(LATEXMK) $(LATEXMKOPT) $(CONTINUOUS) \
-		-pdflatex="$(LATEX) $(LATEXOPT) $(NONSTOP) %O %S" $(MAIN_RESUME)
-
+# Dummy target to force rebuild
 force:
-	touch .refresh
-	rm $(MAIN).pdf
-	$(LATEXMK) $(LATEXMKOPT) $(CONTINUOUS) \
-		-pdflatex="$(LATEX) $(LATEXOPT) %O %S" $(MAIN)
-	rm $(MAIN_RESUME).pdf
-	$(LATEXMK) $(LATEXMKOPT) $(CONTINUOUS) \
-		-pdflatex="$(LATEX) $(LATEXOPT) %O %S" $(MAIN_RESUME)
 
+# Central rule used for both public and private builds
+build:
+	@echo "📂 Searching for .tex file in '$(DIR)'..."
+	@TEXFILE=$$(find $(DIR) -maxdepth 1 -name '*.tex'); \
+	COUNT=$$(echo $$TEXFILE | wc -w); \
+	if [ $$COUNT -eq 0 ]; then \
+		echo "❌ No .tex file found in '$(DIR)'"; exit 1; \
+	elif [ $$COUNT -gt 1 ]; then \
+		echo "❌ Multiple .tex files found in '$(DIR)':"; \
+		echo "$$TEXFILE"; \
+		echo "➡️  Please keep only one .tex file in the folder."; exit 1; \
+	else \
+		echo "✅ Compiling $$TEXFILE..."; \
+		$(LATEXMK) $(LATEXMKOPT) -output-directory=$(DIR) \
+			-pdflatex="$(LATEX) $(LATEXOPT) $(NONSTOP) %O %S" \
+			$$TEXFILE; \
+		echo "📥 Moving PDF to build/ directory..."; \
+		mkdir -p build; \
+		BASENAME=$$(basename $$TEXFILE .tex); \
+		DIRNAME=$$(basename $(DIR)); \
+		mv -f $(DIR)/$$BASENAME.pdf build/$$DIRNAME-$$BASENAME.pdf; \
+		echo "📄 build/$$DIRNAME-$$BASENAME.pdf created."; \
+	fi
+
+
+# Clean both public and private outputs
 clean:
-	$(LATEXMK) -C $(MAIN)
-	$(LATEXMK) -C $(MAIN_RESUME)
-	rm -f $(MAIN).pdfsync
-	rm -f $(MAIN_RESUME).pdfsync
-	rm -rf *~ *.tmp
-	rm -f *.bbl *.blg *.brf *.aux *.end *.fls *.log *.out *.fdb_latexmk *-blx.bib
+	@echo "🧼 Cleaning public directories..."
+	@for dir in $(DIRS); do \
+		find $$dir -maxdepth 1 \( \
+			-name "*.aux" -o -name "*.log" -o -name "*.out" -o -name "*.fdb_latexmk" \
+			-o -name "*.fls" -o -name "*.bbl" -o -name "*.blg" -o -name "*.pdf" \
+			-o -name "*-blx.bib" -o -name "*.run.xml" \
+		\) -delete 2>/dev/null || true; \
+	done
 
-once: 
-	$(LATEX) $(MAIN)
-	$(BIBTEX) $(MAIN).aux
-	$(LATEXMK) $(LATEXMKOPT) -pdflatex="$(LATEX) $(LATEXOPT) %O %S" $(MAIN)
+	@echo "🧼 Cleaning private directories..."
+	@for dir in priv/*; do \
+		if [ -d $$dir ]; then \
+			find $$dir -maxdepth 1 \( \
+				-name "*.aux" -o -name "*.log" -o -name "*.out" -o -name "*.fdb_latexmk" \
+				-o -name "*.fls" -o -name "*.bbl" -o -name "*.blg" -o -name "*.pdf" \
+				-o -name "*-blx.bib" -o -name "*.run.xml" \
+			\) -delete 2>/dev/null || true; \
+		fi \
+	done
 
-	$(LATEX) $(MAIN_RESUME)
-	$(BIBTEX) $(MAIN_RESUME).aux
-	$(LATEXMK) $(LATEXMKOPT) -pdflatex="$(LATEX) $(LATEXOPT) %O %S" $(MAIN_RESUME)
-
-cv:
-	$(LATEX) $(MAIN)
-	$(BIBTEX) $(MAIN).aux
-	$(LATEXMK) $(LATEXMKOPT) -pdflatex="$(LATEX) $(LATEXOPT) %O %S" $(MAIN)
+	@echo "🗑️  Removing build directory..."
+	#@rm -rf build
 
 
-resume:
-	$(LATEX) $(MAIN_RESUME)
-	$(BIBTEX) $(MAIN_RESUME).aux
-	$(LATEXMK) $(LATEXMKOPT) -pdflatex="$(LATEX) $(LATEXOPT) %O %S" $(MAIN_RESUME)
-
-debug:
-	$(LATEX) $(LATEXOPT) $(MAIN)
-	$(LATEX) $(LATEXOPT) $(MAIN_RESUME)
-
-.PHONY: clean force once all
+.PHONY: all $(DIRS) build clean force

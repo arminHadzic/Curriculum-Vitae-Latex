@@ -2,7 +2,7 @@
 A simple CV made for graduate school applications and new graduate students.  The CV is made using LateX and ModernCV.  Adaption by Armin Hadzic. Original by Xavier Danaux
 
 # How it works:
-The makefile builds a PDF corresponding to the \*.tex file in a given directory. 
+The makefile builds a PDF, using LaTeX, corresponding to the \*.tex file in a given directory. 
 
 For example, 
 ```
@@ -28,7 +28,7 @@ make new_resume
 ```
 The result should be located in the build directory:
 ```console
-build/new_resume-MyNewResume.pdf
+ls build/new_resume-MyNewResume.pdf
 ```
 
 Alternatively, run an example:

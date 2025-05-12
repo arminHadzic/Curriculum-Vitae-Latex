@@ -9,9 +9,17 @@ CONTINUOUS = -pvc
 BIBDIR=publications
 export BIBINPUTS := $(BIBDIR):
 
+# Optional preview mode
+PREVIEW_MODE ?= false
 
 # Public resume directories (you control this list)
 DIRS = general_resume general_cv
+
+.PHONY: preview all $(DIRS) force build clean
+
+# Update the pdf live whenever a tex change is made
+preview: PREVIEW_MODE=true
+preview: $(filter-out preview,$(MAKECMDGOALS))
 
 # Target for building all resumes (public + private)
 all: $(DIRS) $(shell find priv -maxdepth 1 -mindepth 1 -type d)
@@ -52,7 +60,6 @@ build:
 		echo "📄 build/$$DIRNAME-$$BASENAME.pdf created."; \
 	fi
 
-
 # Clean both public and private outputs
 clean:
 	@echo "🧼 Cleaning public directories..."
@@ -79,4 +86,35 @@ clean:
 	#@rm -rf build
 
 
-.PHONY: all $(DIRS) build clean force
+# Catch-all rule for building resumes (with or without preview)
+%:
+	@echo "📂 Processing target '$@'..."
+	@TEXFILE=$$(realpath $$(find $@ -maxdepth 1 -name '*.tex')); \
+	COUNT=$$(echo $$TEXFILE | wc -w); \
+	if [ $$COUNT -eq 0 ]; then \
+		echo "❌ No .tex file found in '$@'"; exit 1; \
+	elif [ $$COUNT -gt 1 ]; then \
+		echo "❌ Multiple .tex files found in '$@':"; \
+		echo "$$TEXFILE"; \
+		echo "➡️  Please keep only one .tex file in the folder."; exit 1; \
+	else \
+		echo "✅ Found $$TEXFILE"; \
+		mkdir -p build; \
+		BASENAME=$$(basename $$TEXFILE .tex); \
+		DIRNAME=$$(basename $@); \
+		OUTPDF="build/$$DIRNAME-$$BASENAME.pdf"; \
+		if [ "$(PREVIEW_MODE)" = "true" ]; then \
+			echo "👀 Live preview mode enabled..."; \
+			$(LATEXMK) -pvc \
+				-jobname="$$DIRNAME-$$BASENAME" \
+				-pdflatex="$(LATEX) $(LATEXOPT) $(NONSTOP) %O %S" \
+				$$TEXFILE; \
+		else \
+			echo "🔨 Compiling once to $$OUTPDF..."; \
+			$(LATEXMK) -pdf \
+				-jobname="$$DIRNAME-$$BASENAME" \
+				-output-directory=build \
+				-pdflatex="$(LATEX) $(LATEXOPT) $(NONSTOP) %O %S" \
+				$$TEXFILE; \
+			echo "✅ Output: $$OUTPDF"; \
+		fi

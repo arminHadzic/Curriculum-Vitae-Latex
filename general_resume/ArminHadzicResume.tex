@@ -29,7 +29,6 @@
 
 \moderncvstyle{banking} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
 \moderncvcolor{blue} % CV color - options include: 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
-\usepackage{xcolor} 
 
 \usepackage[scale=0.88, 
 			lmargin=0.95cm, 
@@ -41,8 +40,6 @@
 \usepackage[minnames=8,
 			maxnames=10,
 			backend=bibtex,
-            style=authoryear,
-            natbib=true, 
             style=numeric-comp,
             sorting=ydnt,
             backref=false,
@@ -53,12 +50,15 @@
 			colorlinks=true,
 			urlcolor=blue,
 			]{hyperref}
- 
+\usepackage{academicons}
+\usepackage{fontspec}
+
+\providecommand{\Accessible}[2]{#2}  % header-safe: ignore ActualText
 
 % Publication bib files
-\addbibresource{publications/conferences}
-\addbibresource{publications/journals}
-\addbibresource{publications/workshops}
+\addbibresource{publications/conferences.bib}
+\addbibresource{publications/journals.bib}
+\addbibresource{publications/workshops.bib}
 %\addbibresource[label=under_review]{under_review}
 %\addbibresource[label=abstracts]{abstracts}
 
@@ -74,8 +74,30 @@
   }
 \makeatother
 
+
+% To support more-parsable icons
+\setmainfont{TeX Gyre Heros} % or Source Sans 3, Inter, etc.
+
+% \moderncvicons{awesome}      % tell moderncv to use Font Awesome icons
+% \usepackage{fontawesome5}    % make sure FA5 is available
+
 % Remove bullet from contact information, replace with 2 spaces
-\renewcommand*{\makeheaddetailssymbol}{~~}
+\renewcommand*{\makeheaddetailssymbol}{\space|\space}
+
+% Proper google scholar icon
+\renewcommand*{\googlescholarsocialsymbol}{%
+  \Accessible{[Papers]}{\aiGoogleScholar}%
+  \textnormal{\kern0.25em}%
+}
+
+% Tell hyperref what to write in PDF strings (bookmarks/metadata)
+\pdfstringdefDisableCommands{%
+  % Map BOTH the icon macro and the moderncv symbol macro:
+  \def\aiGoogleScholar{Google Scholar}%
+  \renewcommand*{\googlescholarsocialsymbol}{Google Scholar}%
+}
+
+
 
 %----------------------------------------------------------------------------------------
 %   NAME AND CONTACT INFORMATION SECTION
@@ -88,12 +110,13 @@
 %\title{Curriculum  LaTeX Error: Missing \begin{document}.Vitae}
 %\address{}
 %\mobile{(\#\#\#) \#\#\#-\#\#\#\#}
-\email{firstlast at outlook.com}
+\email{first.last@outlook.com}
+%\email{armin.hadzic.ai@gmail.com}
 
 % The first argument is the url for the clickable link, the second argument is the url displayed in the template - this allows special characters to be displayed such as the tilde in this example
 \homepage{www.arminhadzic.com}
 \social[linkedin][www.linkedin.com/in/armin-hadzic]{LinkedIn}
-\social[googlescholar][scholar.google.com/citations?user=DlDme3IAAAAJ&hl=en]{Papers}
+\social[googlescholar][scholar.google.com/citations?user=DlDme3IAAAAJ]{Papers}
 \social[github][github.com/arminHadzic]{Code}
 
 %----------------------------------------------------------------------------------------
@@ -105,14 +128,10 @@
 \vspace*{-1.5cm}
 
 %----------------------------------------------------------------------------------------
-%   EDUCATION SECTION
+%   RESEARCH INTERESTS SECTION
 %----------------------------------------------------------------------------------------
-
-\section{Education}
-\cventry{Advisor: Nathan Jacobs}{Master of Science in Computer Science}{University of Kentucky}{2018-2020}{\textit{GPA -- 4.0, Outstanding MS Student Award}}{}
-\cventry{Magna Cum Laude}{Bachelor of Science in Computer Engineering}{University of Kentucky}{2016}{\textit{GPA -- 3.8}}{}
-\cventry{Magna Cum Laude}{Bachelor of Science in Electrical Engineering}{University of Kentucky}{2009-2013}{\textit{GPA -- 3.8}}{} 
-% Arguments not required can be left empty
+% \section{}
+% \cvitem{}{I design and deliver scalable AI systems that measurably improve performance and push the state-of-the-art. My research interests touch on multimodal fusion, computer vision (e.g., video generation, 3D vision), and real-world outcomes.}
 
 %----------------------------------------------------------------------------------------
 %   PROFESSIONAL EXPERIENCE SECTION
@@ -122,11 +141,11 @@
 \cventry{Fairfax, VA}{\textsc{DZYNE Technologies Inc.}}{Senior AI Research Scientist}{2021-Present}{}
 {
 \begin{itemize}
-	\item Designed and trained a feature extractor and hierarchical weighted sampler for a multimodal fusion model on a \textbf{5TB AWS dataset} across 5 organizations—boosting the \textbf{F1 score from $\mathbf{52\%}$ to $\mathbf{75\%}$} and \textbf{securing} $\mathbf{\$500k}$ in funding for a $\$2.3M$ program.
-	\item Developed scalable tools for processing and constructing $\mathbf{100k}$\textbf{+ sample image datasets}, resulting in a $\mathbf{\$1M}$ \textbf{contract extension} after achieving $\mathbf{78\%}$ \textbf{F1 score} in segmentation.
-	\item Led/co-wrote 9 proposals, securing \textbf{$\mathbf{\$3M}$ in funding} to support AI R\&D for a team of 11 researchers and engineers.
-	\item \textbf{Achieved $\mathbf{88\%}$ accuracy} in land cover semantic segmentation by developing a GAN-based super-resolution label synthesis method, with strong applicability to street-level imagery problems.
-	\item Engineered a multimodal transformer (PyTorch, HuggingFace) with contextual representations, surpassing the prior state-of-the-art method by reducing traffic modeling error to $\mathbf{7\%}$ on a $\mathbf{12k}$ \textbf{sample} dataset.
+	\item Developed multimodal fusion models 5TB of videos for a multi-org initiative (Rutgers, WashU, UKy); boosting F1 from $52\%$ to $75\%$ and securing $\$500k$ in follow-on for $\$2.3M$ program (WACV~\cite{greenwell2024watch}).
+	\item Designed a multimodal transformer with contextual representations for traffic modeling; exceeding the prior state-of-the-art (SOTA) by 7\% (ECCV~\cite{ProbTraffic}).
+	\item Automated multi-resolution imagery processing and dataset construction ($>100k$ samples), resulting in a $\$1M$ extension after achieving $78\%$ segmentation F1.
+	\item Co-led 9 proposal efforts across an 11-person team; securing $\$3M$ to support AI R\&D.
+	\item Developed a generative approach for segmentation super‑resolution that reached $88\%$ accuracy (WACV~\cite{Low2High}).
 \end{itemize}
 }
 
@@ -136,10 +155,10 @@
 \cventry{Laurel, MD}{\textsc{Johns Hopkins University Applied Physics Lab}}{AI Research Scientist}{2020-2021}{}
 {
 \begin{itemize} 
-	\item Modeled GHG emissions using \textbf{overhead imagery} for the Climate TRACE initiative, trained with Slurm and \textbf{deployed} with Docker \& Dask on the Microsoft Planetary Computer, achieving $39kg$ $CO_2$ MAE across the USA and running at global scale.
-	\item Optimized multi-agent swarm controllers via BoTorch, reducing cooperative capture time by $\mathbf{25s}$ for multiple rewards.
-	\item Developed adversarial de-biasing techniques that \textbf{enhanced AI fairness by $\mathbf{20\%}$} in medical imaging and data applications, enabling broader applicability across large populations.
-	\item Developed a state-scale satellite image approach, collapsing the displaced community population estimation error down to $7\%$.
+	\item Trained and deployed vision models at scale (Docker/Dask/Slurm) for the Climate Trace initiative; delivered $CO_2$ emissions estimates at global scale via Microsoft Planetary Computer (CVPRW~\cite{mukherjee2021towards}).
+	\item Developed adversarial de-biasing techniques to improve AI fairness in medical data/imaging applications by $20\%$ (MICCAI~\cite{yuan2023edgemixup}, Neural Computation~\cite{paul2022tara}).
+	\item Optimized multi-agent swarm control; reduced cooperative capture time by $25s$ for multiple rewards (Array~\cite{hadzic2022100218}, ISEC~\cite{buckley2021interdisciplinary}).
+	\item Designed a CUDA kernel for hierarchical video object detection; increased classification specificity under tight latency.
 \end{itemize}
 }
 
@@ -148,8 +167,10 @@
 \cventry{Lexington, KY}{\textsc{University of Kentucky Computer Vision Lab}}{Research Assistant}{2017-2020}{}
 {
 \begin{itemize}
-	\item Developed a multimodal (point cloud/imagery) road \textbf{dataset ($\mathbf{1M}$+ segments)} using distributed computing (Slurm). This improved free-flow speed estimation by $\mathbf{13\%}$--outperforming the prior state-of-the-art with a novel multimodal fusion architecture.
-	\item Designed a PyTorch NLP model to analyze SEC reports, attaining $\mathbf{41\%}$ \textbf{tercile accuracy} in predicting financial returns. Leveraged NLTK and SpaCy for efficient text processing and tokenization.
+	\item Built a multimodal dataset (LiDAR, imagery) and architecture that outperformed the prior SOTA by $13\%$ (CVPRW~\cite{RasterNetpaper}).
+	\item Designed NLP models to forecast company performance based on financial text filings, and benchmarked on evaluation pipelines.
+	\item Led the development of a safety-focused, perception-driven, navigation system (WACV~\cite{WACVpaper}).
+	\item Collaborated with CDC, UNHCR, and IOM on population estimation for resource allocation, reducing error to $7\%$ (IGARSS~\cite{DCApaper}).
 \end{itemize}
 }
 
@@ -158,17 +179,17 @@
 \cventry{Lexington, KY}{\textsc{Belcan Engineering Group Inc.}}{Software Development Engineer}{2015-2018}{}
 {
 \begin{itemize}
-	\item Automated jet engine diagnostics in C/C++, \textbf{saving $\mathbf{\$100,000}$} by developing a diagnostic and fault resolution system.
+	\item Automated jet engine diagnostics in C/C++, saving $\$100k$ by developing a diagnostic and fault resolution system.
 	\item Streamlined a legacy C++/Make cross-platform building system, reducing development and compilation time by $60\%$.
 \end{itemize}
 }
 
 %------------------------------------------------
 
-\cventry{2012-2014}{\textsc{Internships}}{}{}{}
+\cventry{2012-2014}{Internships}{}{}{}
 {
 \begin{itemize}
-	\item Designed a routing algorithm for over 20 Automated Guided Vehicles, reducing scrap and transportation costs by $\mathbf{\$57k}$\textbf{/year}.
+	\item Designed a routing algorithm for $20+$ Automated Guided Vehicles, reducing scrap and transportation costs by $\$57k$/year.
 \end{itemize}
 }
 
@@ -181,11 +202,21 @@
 \begin{tabular}{l@{\qquad}|>{\hspace{0.5pc}}l@{\qquad}} % The final bracket specifies the number of columns in the table along with left and right borders which are specified using vertical bars (|); each column can be left, right or center-justified using l, r or c. To specify a precise width, use p{width}, e.g. p{5cm}.  The qquads specify verticle line dividers. hspace is used to specify the space between text and verticle dividers.
 
 %\toprule % Optional Top horizontal line
-Languages 					& \textbf{Python}, C/C++, Java, Verilog, \LaTeX, Shell \\ \hline % row 1
-AI/ML 						& \textbf{PyTorch}, Keras, Tensorflow, \textbf{Multimodal Transformers}, LLMs, Reinforcement Learning \\ \hline % row 2
+Languages 					& Python, C/C++, Java, Verilog, \LaTeX, Shell \\ \hline % row 1
+AI/ML 						& PyTorch, Keras, BoTorch, Multimodal Transformers, LLMs, Reinforcement Learning \\ \hline % row 2
 Computer Vision 			& Generative AI, Segmentation, 3D Vision, Localization, Pose, Depth, Remote Sensing \\ \hline % row 3
-Infrastructure 				& Data Processing, Distributed Training, Slurm, Docker, Optimization, AWS, Evaluation \\ % row 4
+Infrastructure 				& Data Processing, Distributed Training, Slurm, Docker, Optimization, AWS, A\&B Testing \\ % row 4
 \end{tabular}
+
+%----------------------------------------------------------------------------------------
+%   EDUCATION SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Education}
+\cventry{Advisor: Nathan Jacobs}{Master of Science in Computer Science}{University of Kentucky}{2018-2020}{\textit{GPA -- 4.0, Outstanding MS Student Award}}{}
+\cventry{Magna Cum Laude}{Bachelor of Science in Computer Engineering}{University of Kentucky}{2016}{\textit{GPA -- 3.8}}{}
+\cventry{Magna Cum Laude}{Bachelor of Science in Electrical Engineering}{University of Kentucky}{2009-2013}{\textit{GPA -- 3.8}}{} 
+% Arguments not required can be left empty
 
 %----------------------------------------------------------------------------------------
 %   SERVICE SECTION
@@ -199,5 +230,27 @@ Infrastructure 				& Data Processing, Distributed Training, Slurm, Docker, Optim
 	\item Reviewer 2022-2025: CVPR, ECCV, ICCV, ICLR, NeurIPS, WACV, and CVPRW EARTHVISION.
 \end{itemize}
 }
+
+\pagebreak
+%----------------------------------------------------------------------------------------
+%   PUBLICATIONS SKILLS SECTION
+%----------------------------------------------------------------------------------------
+
+\printbibheading [title={Publications}]
+\printbibliography[
+    title={Conference Papers},
+    keyword={conferences},
+    heading=subbibliography, 
+    resetnumbers=false]
+\printbibliography[
+    title={Journal Articles},
+    keyword={journals},
+    heading=subbibliography, 
+    resetnumbers=false]
+\printbibliography[
+    title={Workshop Papers},
+    keyword={workshops}, 
+    heading=subbibliography, 
+    resetnumbers=false]
 
 \end{document}

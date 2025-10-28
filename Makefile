@@ -1,19 +1,21 @@
-LATEX = pdflatex
+LATEX ?= xelatex # pdflatex
 LATEXOPT = --shell-escape
 NONSTOP = --interaction=nonstopmode
 LATEXMK = latexmk
-LATEXMKOPT = -pdf
 CONTINUOUS = -pvc
 
+# Build the command latexmk should run for "PDF-from-LaTeX"
+LATEXMK_ENGINE_OPT = -$(LATEX)
+
 # Bibliography location
-BIBDIR=publications
+BIBDIR = publications
 export BIBINPUTS := $(BIBDIR):
 
 # Optional preview mode
 PREVIEW_MODE ?= false
 
 # Public resume directories (you control this list)
-DIRS = general_resume general_cv
+DIRS = general_resume general_cv general_hybrid
 
 .PHONY: preview all $(DIRS) force build clean
 
@@ -49,8 +51,10 @@ build:
 		echo "➡️  Please keep only one .tex file in the folder."; exit 1; \
 	else \
 		echo "✅ Compiling $$TEXFILE..."; \
-		$(LATEXMK) $(LATEXMKOPT) -output-directory=$(DIR) \
-			-pdflatex="$(LATEX) $(LATEXOPT) $(NONSTOP) %O %S" \
+		$(LATEXMK) $(LATEXMK_ENGINE_OPT) \
+			 -output-directory=$(DIR) \
+			 -latexoption="$(NONSTOP)" \
+			 -latexoption="$(LATEXOPT)" \
 			$$TEXFILE; \
 		echo "📥 Moving PDF to build/ directory..."; \
 		mkdir -p build; \
@@ -105,16 +109,19 @@ clean:
 		OUTPDF="build/$$DIRNAME-$$BASENAME.pdf"; \
 		if [ "$(PREVIEW_MODE)" = "true" ]; then \
 			echo "👀 Live preview mode enabled..."; \
-			$(LATEXMK) -pvc \
+			$(LATEXMK) $(LATEXMK_ENGINE_OPT) -pvc \
 				-jobname="$$DIRNAME-$$BASENAME" \
-				-pdflatex="$(LATEX) $(LATEXOPT) $(NONSTOP) %O %S" \
+				-output-directory=build \
+				-latexoption="$(NONSTOP)" \
+  				-latexoption="$(LATEXOPT)" \
 				$$TEXFILE; \
 		else \
 			echo "🔨 Compiling once to $$OUTPDF..."; \
-			$(LATEXMK) -pdf \
+			$(LATEXMK) $(LATEXMK_ENGINE_OPT) \
 				-jobname="$$DIRNAME-$$BASENAME" \
 				-output-directory=build \
-				-pdflatex="$(LATEX) $(LATEXOPT) $(NONSTOP) %O %S" \
+				-latexoption="$(NONSTOP)" \
+  				-latexoption="$(LATEXOPT)" \
 				$$TEXFILE; \
 			echo "✅ Output: $$OUTPDF"; \
 		fi

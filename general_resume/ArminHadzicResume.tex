@@ -27,8 +27,8 @@
 
 \documentclass[11pt,a4paper,sans]{moderncv} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
 
-\moderncvstyle{banking} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
 \moderncvcolor{blue} % CV color - options include: 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+\moderncvstyle{banking} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
 
 \usepackage[scale=0.88, 
 			lmargin=0.95cm, 
@@ -123,6 +123,8 @@
 
 \begin{document}
 
+% Force name and section headers to use the theme color since banking defaults to black/gray
+
 \makecvtitle % Print the CV title
 \vspace*{-1.5cm}
 
@@ -136,19 +138,19 @@
 %   PROFESSIONAL EXPERIENCE SECTION
 %----------------------------------------------------------------------------------------
 
-\section{Professional Experience}
+\section{Experience}
 \cventry{Fairfax, VA}{\textsc{DZYNE Technologies Inc.}}{Senior AI Research Scientist}{2021-Present}{}
 {
 \begin{itemize}
-	\item Developed multimodal fusion models on 5TB of videos for a multi-org initiative (Rutgers, WashU, UKy); boosting F1 from $52\%$ to $75\%$ and securing $\$500k$ in follow-on for $\$2.3M$ program (WACV~\cite{greenwell2024watch}).
+	\item Orchestrated autonomous agentic (Claude, Gemini, ChatGPT) workflows via OpenCode to develop a semantic video search application, cross-view localization, and physics simulation.
+  \item Developed multimodal fusion models on 5TB of videos for a multi-org initiative (Rutgers, WashU, UKy); boosting F1 from $52\%$ to $75\%$ and securing $\$500k$ in follow-on for $\$2.3M$ program (WACV~\cite{greenwell2024watch}).
 	\item Designed a multimodal transformer with contextual representations for traffic modeling; exceeding the prior state-of-the-art (SOTA) by 7\% (ECCV~\cite{ProbTraffic}).
-	\item Automated multi-resolution image processing and dataset construction ($>100k$ samples), resulting in a $\$1M$ extension after achieving $78\%$ segmentation F1.
-	\item Co-led 9 proposal efforts across an 11-person team; securing $\$3M$ to support AI R\&D.
+  \item Automated multi-resolution image processing and dataset construction ($>100k$ samples), resulting in a $\$1M$ extension after achieving $78\%$ segmentation F1.
 	\item Developed a generative approach for segmentation super‑resolution that reached $88\%$ accuracy (WACV~\cite{Low2High}).
+  \item Co-led 9 proposal efforts across an 11-person team; securing $\$3M$ to support AI R\&D.
 \end{itemize}
 }
 
-%% TODO: AR/VR MLDE, GPSD
 %------------------------------------------------
 
 \cventry{Laurel, MD}{\textsc{Johns Hopkins University Applied Physics Lab}}{AI Research Scientist}{2020-2021}{}
@@ -157,7 +159,6 @@
 	\item Trained and deployed vision models at scale (Docker/Dask/Slurm) for the Climate Trace initiative; delivered $CO_2$ emissions estimates at global scale via Microsoft Planetary Computer (CVPRW~\cite{mukherjee2021towards}).
 	\item Developed adversarial de-biasing techniques to improve AI fairness in medical data/imaging applications by $20\%$ (MICCAI~\cite{yuan2023edgemixup}, Neural Computation~\cite{paul2022tara}).
 	\item Optimized multi-agent swarm control; reduced cooperative capture time by $25s$ for multiple rewards (Array~\cite{hadzic2022100218}, ISEC~\cite{buckley2021interdisciplinary}).
-	\item Designed a CUDA kernel for hierarchical video object detection; increased classification specificity under tight latency.
 \end{itemize}
 }
 
@@ -167,9 +168,8 @@
 {
 \begin{itemize}
 	\item Built a multimodal dataset (LiDAR, imagery) and architecture that outperformed the prior SOTA by $13\%$ (CVPRW~\cite{RasterNetpaper}).
-	\item Designed NLP models to forecast company performance based on financial text filings, and benchmarked on evaluation pipelines.
-	\item Led the development of a safety-focused, perception-driven, navigation system (WACV~\cite{WACVpaper}).
 	\item Collaborated with CDC, UNHCR, and IOM on population estimation for resource allocation, reducing error to $7\%$ (IGARSS~\cite{DCApaper}).
+  \item Led the development of a safety-focused, perception-driven, navigation system (WACV~\cite{WACVpaper}).
 \end{itemize}
 }
 
@@ -178,19 +178,17 @@
 \cventry{Lexington, KY}{\textsc{Belcan Engineering Group Inc.}}{Software Development Engineer}{2015-2018}{}
 {
 \begin{itemize}
-	\item Automated jet engine diagnostics in C/C++, saving $\$100k$ by developing a diagnostic and fault resolution system.
-	\item Streamlined a legacy C++/Make cross-platform building system, reducing development and compilation time by $60\%$.
+	\item Automated jet engine diagnostics and streamlined a legacy C++/Make cross-platform build system, saving $\$100k$ and reducing compilation time by $60\%$.
 \end{itemize}
 }
 
 %------------------------------------------------
 
-\cventry{2012-2014}{Internships}{}{}{}
-{
+\section{Personal Projects}
 \begin{itemize}
-	\item Designed a routing algorithm for $20+$ Automated Guided Vehicles, reducing scrap and transportation costs by $\$57k$/year.
+	\item \textit{CharacterSheet: Agentic Character Design}: Developed a Generative AI application integrating LangGraph, FastAPI, and Google Gemini to transform character references into animation model sheets via an interactive chatbot.
+	\item \textit{Visual Content Moderation}: Engineered a dockerized computer vision pipeline with accelerated training and inference.
 \end{itemize}
-}
 
 %----------------------------------------------------------------------------------------
 %   TECHNICAL SKILLS SECTION
@@ -201,10 +199,10 @@
 \begin{tabular}{l@{\qquad}|>{\hspace{0.5pc}}l@{\qquad}} % The final bracket specifies the number of columns in the table along with left and right borders which are specified using vertical bars (|); each column can be left, right or center-justified using l, r or c. To specify a precise width, use p{width}, e.g. p{5cm}.  The qquads specify verticle line dividers. hspace is used to specify the space between text and verticle dividers.
 
 %\toprule % Optional Top horizontal line
-Languages 					& Python, C/C++, Java, Verilog, \LaTeX, Shell \\ \hline % row 1
-AI/ML 						& PyTorch, Keras, BoTorch, Multimodal Transformers, LLMs, Reinforcement Learning \\ \hline % row 2
-Computer Vision 			& Generative AI, Segmentation, 3D Vision, Localization, Pose, Depth, Remote Sensing \\ \hline % row 3
-Infrastructure 				& Data Processing, Distributed Training, Slurm, Docker, Optimization, AWS, A\&B Testing \\ % row 4
+Languages 					  & Python, C/C++, Java, Verilog, \LaTeX, Shell \\ \hline % row 1
+AI/ML 						    & PyTorch, Agentic AI, LLMs, Multimodal, NLP, BoTorch, Diffusion, Reinforcement Learning \\ \hline % row 2
+Computer Vision 			& Generative AI, 3D Vision, Segmentation, Localization, Pose, Depth, Remote Sensing \\ \hline % row 3
+Infrastructure 				& AI Orchestration, FastAPI, Data Processing, Training, Slurm, MLflow, Docker, AWS \\ % row 4
 \end{tabular}
 
 %----------------------------------------------------------------------------------------
@@ -213,9 +211,7 @@ Infrastructure 				& Data Processing, Distributed Training, Slurm, Docker, Optim
 
 \section{Education}
 \cventry{Advisor: Nathan Jacobs}{Master of Science in Computer Science}{University of Kentucky}{2018-2020}{\textit{GPA -- 4.0, Outstanding MS Student Award}}{}
-\cventry{Magna Cum Laude}{Bachelor of Science in Computer Engineering}{University of Kentucky}{2016}{\textit{GPA -- 3.8}}{}
-\cventry{Magna Cum Laude}{Bachelor of Science in Electrical Engineering}{University of Kentucky}{2009-2013}{\textit{GPA -- 3.8}}{} 
-% Arguments not required can be left empty
+\cventry{Magna Cum Laude}{BS in Computer Engineering \& BS in Electrical Engineering}{University of Kentucky}{2009-2016}{\textit{GPA -- 3.8}}{}
 
 %----------------------------------------------------------------------------------------
 %   SERVICE SECTION
@@ -226,7 +222,7 @@ Infrastructure 				& Data Processing, Distributed Training, Slurm, Docker, Optim
 {
 \begin{itemize}
 	\item Best Paper ISEC 2022 and CVPRW EARTHVISION 2021; Outstanding Reviewer CVPR 2024 \& 2025.
-	\item Reviewer 2022-2025: CVPR, ECCV, ICCV, ICLR, NeurIPS, WACV, and CVPRW EARTHVISION.
+	\item Reviewer 2022-2026: CVPR, ECCV, ICCV, ICLR, NeurIPS, WACV, and CVPRW EARTHVISION.
 \end{itemize}
 }
 
